@@ -33,7 +33,7 @@ class FollowerListVC: UIViewController {
     private func configureCollectionView() {
         collectionView = UICollectionView(
             frame: view.bounds,
-            collectionViewLayout: UIHelper.createFlowLayout(for: view)
+            collectionViewLayout: UIHelper.createCollectionViewFlowLayout(for: view)
         )
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
