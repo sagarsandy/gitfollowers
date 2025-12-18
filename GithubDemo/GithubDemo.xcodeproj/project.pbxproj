@@ -14,7 +14,7 @@
 		1B4CD8862EF1334D00663408 /* Exceptions for "GithubDemo" folder in "GithubDemo" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Others/Info.plist,
+				Info.plist,
 			);
 			target = 1B4CD8732EF1334C00663408 /* GithubDemo */;
 		};

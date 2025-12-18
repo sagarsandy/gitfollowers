@@ -7,6 +7,8 @@
 
 import UIKit
 
+fileprivate var containerView: UIView!
+
 extension UIViewController {
     func showSSAlert(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
@@ -14,6 +16,32 @@ extension UIViewController {
             alertVC.modalPresentationStyle = .overFullScreen
             alertVC.modalTransitionStyle = .crossDissolve
             self.present(alertVC, animated: true)
+        }
+    }
+    
+    func showLoadingView() {
+        containerView = UIView(frame: view.bounds)
+        view.addSubview(containerView)
+    
+        containerView.backgroundColor = .systemBackground
+        containerView.alpha = 0
+        UIView.animate(withDuration: 0.15) { containerView.alpha = 0.75 }
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(activityIndicatorView)
+
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        ])
+
+        activityIndicatorView.startAnimating()
+    }
+    
+    func dismissLoadingView() {
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
         }
     }
 }
